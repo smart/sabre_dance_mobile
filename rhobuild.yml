@@ -1,0 +1,12 @@
+extensions: ["json", "net/http"]
+sdk: "/Users/smartocci/Personal/git/rhodes"
+name: sabre_dance_mobile
+version: 1.4.0
+vendor: rhomobile
+bbver: 4.6
+applog: rholog.txt
+iphone:
+  configuration: Debug
+  sdk: iphonesimulator3.0
+  codesignidentity:
+  entitlements:

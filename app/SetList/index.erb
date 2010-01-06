@@ -1,0 +1,14 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		SetLists
+	</h1>
+</div>
+
+<ul id="setlists" title="SetLists" selected="true">
+  	<a class="button right_button" href="SetList/new" target="_self">New</a>
+	<%@setlists.each do |x|%>
+	
+	<li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
+	
+	<%end%>
+</ul>

@@ -1,0 +1,52 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		New ShowSetList
+	</h1>
+</div>
+
+<form title="New ShowSetList" 
+	  class="panel"
+	  id="showsetlist_new_form" 
+	  method="POST" 
+	  action="<%=url_for(:action => :create)%>" selected="true">
+	<fieldset>
+		<input type="hidden" name="id" value="<%=@showsetlist.object%>"/>
+		
+		  <div class="row">
+			  <label>Show: </label>
+			  <input type="text" name="showsetlist[show_id]"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Set list: </label>
+			  <input type="text" name="showsetlist[set_list_id]"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Position: </label>
+			  <input type="text" name="showsetlist[position]"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Name: </label>
+			  <input type="text" name="showsetlist[name]"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Notes: </label>
+			  <input type="text" name="showsetlist[notes]"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Created at: </label>
+			  <input type="text" name="showsetlist[created_at]"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Updated at: </label>
+			  <input type="text" name="showsetlist[updated_at]"/>
+		  </div>
+		
+	</fieldset>
+	<input type="submit" value="Create"/>
+</form>

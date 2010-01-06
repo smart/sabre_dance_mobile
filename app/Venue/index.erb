@@ -1,0 +1,15 @@
+<div class="toolbar">
+  <a id="backButton" class="button" href="/app/Show/main" target="_self">Back</a>
+	<h1 id="pageTitle">
+		Venues
+	</h1>
+	<a class="button right_button" href="Venue/new" target="_self">New</a>
+</div>
+
+<ul id="venues" title="Venues" selected="true">
+	<%@venues.each do |x|%>
+
+	<li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
+
+	<%end%>
+</ul>

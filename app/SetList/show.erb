@@ -1,0 +1,44 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		<%=@setlist.name%>
+	</h1>
+</div>
+
+<div class="panel" selected="true">
+
+<a class="button right_button" href="<%=url_for(:action => :edit, :id => @setlist.object)%>" target="_self">Edit</a>
+
+<table class="grid">
+  
+  <tr>
+	<td class="gridleft">Name</td>
+    <td class="gridright"><%=@setlist.name%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Author</td>
+    <td class="gridright"><%=@setlist.author%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Notes</td>
+    <td class="gridright"><%=@setlist.notes%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Position</td>
+    <td class="gridright"><%=@setlist.position%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">CreatedAt</td>
+    <td class="gridright"><%=@setlist.created_at%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">UpdatedAt</td>
+    <td class="gridright"><%=@setlist.updated_at%></td>
+  </tr>
+  
+</table>
+</div>

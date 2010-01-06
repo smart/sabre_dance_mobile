@@ -1,0 +1,62 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Edit <%=@songperformance.song_id%>
+	</h1>
+</div>
+
+<form title="Edit SongPerformance" 
+	  class="panel" 
+	  id="songperformance_edit_form" 
+	  method="POST" 
+	  action="<%=url_for(:action => :update)%>" selected="true">
+	<fieldset>
+		<input type="hidden" name="id" value="<%=@songperformance.object%>"/>
+		
+		  <div class="row">
+			  <label>Song: </label>
+			  <input type="text" name="songperformance[song_id]" value="<%=@songperformance.song_id%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Set list: </label>
+			  <input type="text" name="songperformance[set_list_id]" value="<%=@songperformance.set_list_id%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Position: </label>
+			  <input type="text" name="songperformance[position]" value="<%=@songperformance.position%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Notes: </label>
+			  <input type="text" name="songperformance[notes]" value="<%=@songperformance.notes%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Segue: </label>
+			  <input type="text" name="songperformance[segue]" value="<%=@songperformance.segue%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Created at: </label>
+			  <input type="text" name="songperformance[created_at]" value="<%=@songperformance.created_at%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Updated at: </label>
+			  <input type="text" name="songperformance[updated_at]" value="<%=@songperformance.updated_at%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Sequence: </label>
+			  <input type="text" name="songperformance[sequence_id]" value="<%=@songperformance.sequence_id%>"/>
+		  </div>
+		
+	</fieldset>
+	<input type="submit" value="Update"/>
+	<p align="center">
+		<a href="<%=url_for(:action => :delete, :id => @songperformance.object)%>">
+			<font color="#990000">Delete</font>
+		</a>
+	</p>
+</form>

@@ -1,0 +1,33 @@
+<div id="home" class="plastic">
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Dashboard
+	</h1>
+</div>
+      
+<div class="panel" selected="true">
+
+<table class="grid">
+
+  <tr>
+	<td class="gridleft">Upcoming:</td>
+    <td class="gridright"><%= @upcoming_show ? link_to( display_show(@upcoming_show), :model => "Show", :action => :show, :id => @upcoming_show.id) : "None Scheduled" %></td>
+  </tr>
+  <td class="gridleft">Last Played:</td>
+    <td class="gridright">
+      <a href="/app/Show/<%= @last_show.object %>">
+        <%= display_show(@last_show) %>
+      </a>
+    </td>
+
+  </tr>
+
+</table>
+<% if @loading %>
+LOADING DB::
+<% end %>
+<div class="player_wrapper">
+      <a href="/app/Dashboard/load_db">Load DB
+      </a>  </div>
+      
+</div>

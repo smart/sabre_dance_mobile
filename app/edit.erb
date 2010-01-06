@@ -1,0 +1,67 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Edit <%=@show.pt_id%>
+	</h1>
+</div>
+
+<form title="Edit Show" 
+	  class="panel" 
+	  id="show_edit_form" 
+	  method="POST" 
+	  action="<%=url_for(:action => :update)%>" selected="true">
+	<fieldset>
+		<input type="hidden" name="id" value="<%=@show.object%>"/>
+		
+		  <div class="row">
+			  <label>Pt: </label>
+			  <input type="text" name="show[pt_id]" value="<%=@show.pt_id%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Tour: </label>
+			  <input type="text" name="show[tour_id]" value="<%=@show.tour_id%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Venue: </label>
+			  <input type="text" name="show[venue_id]" value="<%=@show.venue_id%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Name: </label>
+			  <input type="text" name="show[name]" value="<%=@show.name%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Date: </label>
+			  <input type="text" name="show[date]" value="<%=@show.date%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Notes: </label>
+			  <input type="text" name="show[notes]" value="<%=@show.notes%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Created at: </label>
+			  <input type="text" name="show[created_at]" value="<%=@show.created_at%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Updated at: </label>
+			  <input type="text" name="show[updated_at]" value="<%=@show.updated_at%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Scanned for sequences: </label>
+			  <input type="text" name="show[scanned_for_sequences]" value="<%=@show.scanned_for_sequences%>"/>
+		  </div>
+		
+	</fieldset>
+	<input type="submit" value="Update"/>
+	<p align="center">
+		<a href="<%=url_for(:action => :delete, :id => @show.object)%>">
+			<font color="#990000">Delete</font>
+		</a>
+	</p>
+</form>

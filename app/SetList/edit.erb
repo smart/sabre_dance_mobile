@@ -1,0 +1,52 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Edit <%=@setlist.name%>
+	</h1>
+</div>
+
+<form title="Edit SetList" 
+	  class="panel" 
+	  id="setlist_edit_form" 
+	  method="POST" 
+	  action="<%=url_for(:action => :update)%>" selected="true">
+	<fieldset>
+		<input type="hidden" name="id" value="<%=@setlist.object%>"/>
+		
+		  <div class="row">
+			  <label>Name: </label>
+			  <input type="text" name="setlist[name]" value="<%=@setlist.name%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Author: </label>
+			  <input type="text" name="setlist[author]" value="<%=@setlist.author%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Notes: </label>
+			  <input type="text" name="setlist[notes]" value="<%=@setlist.notes%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Position: </label>
+			  <input type="text" name="setlist[position]" value="<%=@setlist.position%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Created at: </label>
+			  <input type="text" name="setlist[created_at]" value="<%=@setlist.created_at%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Updated at: </label>
+			  <input type="text" name="setlist[updated_at]" value="<%=@setlist.updated_at%>"/>
+		  </div>
+		
+	</fieldset>
+	<input type="submit" value="Update"/>
+	<p align="center">
+		<a href="<%=url_for(:action => :delete, :id => @setlist.object)%>">
+			<font color="#990000">Delete</font>
+		</a>
+	</p>
+</form>

@@ -1,0 +1,17 @@
+<div class="toolbar">
+  <a id="backButton" class="button" href="/app/Tour" target="_self">Back</a>
+	<h1 id="pageTitle">
+		<%= @tour.name %>
+	</h1>
+</div>
+
+<ul id="shows" title="Shows" selected="true">
+	<% @tour.shows.each do |show|%>
+
+	<li>
+	  <a href="/app/Show/<%= show.object %>">
+	    <%= display_show(show) %>
+	  </a>
+	</li>
+	<%end%>
+</ul>

@@ -1,0 +1,14 @@
+<div class="toolbar">
+  <a id="backButton" class="button" href="/app/Show/main" target="_self">Back</a>
+	<h1 id="pageTitle">
+		Songs
+	</h1>
+</div>
+
+<ul id="songs" title="Songs" selected="true">
+	<%@songs.each do |x|%>
+	
+	<li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
+	
+	<%end%>
+</ul>

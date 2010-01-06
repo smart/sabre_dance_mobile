@@ -1,0 +1,49 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		<%=@showsetlist.show_id%>
+	</h1>
+</div>
+
+<div class="panel" selected="true">
+
+<a class="button right_button" href="<%=url_for(:action => :edit, :id => @showsetlist.object)%>" target="_self">Edit</a>
+
+<table class="grid">
+  
+  <tr>
+	<td class="gridleft">ShowId</td>
+    <td class="gridright"><%=@showsetlist.show_id%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">SetListId</td>
+    <td class="gridright"><%=@showsetlist.set_list_id%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Position</td>
+    <td class="gridright"><%=@showsetlist.position%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Name</td>
+    <td class="gridright"><%=@showsetlist.name%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Notes</td>
+    <td class="gridright"><%=@showsetlist.notes%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">CreatedAt</td>
+    <td class="gridright"><%=@showsetlist.created_at%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">UpdatedAt</td>
+    <td class="gridright"><%=@showsetlist.updated_at%></td>
+  </tr>
+  
+</table>
+</div>

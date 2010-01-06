@@ -1,0 +1,57 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		Edit <%=@showsetlist.show_id%>
+	</h1>
+</div>
+
+<form title="Edit ShowSetList" 
+	  class="panel" 
+	  id="showsetlist_edit_form" 
+	  method="POST" 
+	  action="<%=url_for(:action => :update)%>" selected="true">
+	<fieldset>
+		<input type="hidden" name="id" value="<%=@showsetlist.object%>"/>
+		
+		  <div class="row">
+			  <label>Show: </label>
+			  <input type="text" name="showsetlist[show_id]" value="<%=@showsetlist.show_id%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Set list: </label>
+			  <input type="text" name="showsetlist[set_list_id]" value="<%=@showsetlist.set_list_id%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Position: </label>
+			  <input type="text" name="showsetlist[position]" value="<%=@showsetlist.position%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Name: </label>
+			  <input type="text" name="showsetlist[name]" value="<%=@showsetlist.name%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Notes: </label>
+			  <input type="text" name="showsetlist[notes]" value="<%=@showsetlist.notes%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Created at: </label>
+			  <input type="text" name="showsetlist[created_at]" value="<%=@showsetlist.created_at%>"/>
+		  </div>
+		
+		  <div class="row">
+			  <label>Updated at: </label>
+			  <input type="text" name="showsetlist[updated_at]" value="<%=@showsetlist.updated_at%>"/>
+		  </div>
+		
+	</fieldset>
+	<input type="submit" value="Update"/>
+	<p align="center">
+		<a href="<%=url_for(:action => :delete, :id => @showsetlist.object)%>">
+			<font color="#990000">Delete</font>
+		</a>
+	</p>
+</form>

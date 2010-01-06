@@ -1,0 +1,54 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		<%=@songperformance.song_id%>
+	</h1>
+</div>
+
+<div class="panel" selected="true">
+
+<a class="button right_button" href="<%=url_for(:action => :edit, :id => @songperformance.object)%>" target="_self">Edit</a>
+
+<table class="grid">
+  
+  <tr>
+	<td class="gridleft">SongId</td>
+    <td class="gridright"><%=@songperformance.song_id%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">SetListId</td>
+    <td class="gridright"><%=@songperformance.set_list_id%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Position</td>
+    <td class="gridright"><%=@songperformance.position%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Notes</td>
+    <td class="gridright"><%=@songperformance.notes%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">Segue</td>
+    <td class="gridright"><%=@songperformance.segue%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">CreatedAt</td>
+    <td class="gridright"><%=@songperformance.created_at%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">UpdatedAt</td>
+    <td class="gridright"><%=@songperformance.updated_at%></td>
+  </tr>
+  
+  <tr>
+	<td class="gridleft">SequenceId</td>
+    <td class="gridright"><%=@songperformance.sequence_id%></td>
+  </tr>
+  
+</table>
+</div>

@@ -1,0 +1,14 @@
+<div class="toolbar">
+	<h1 id="pageTitle">
+		ShowSetLists
+	</h1>
+</div>
+
+<ul id="showsetlists" title="ShowSetLists" selected="true">
+  	<a class="button right_button" href="ShowSetList/new" target="_self">New</a>
+	<%@showsetlists.each do |x|%>
+	
+	<li><%=link_to "#{x.show_id}", :action => :show, :id => x.object%></li>
+	
+	<%end%>
+</ul>

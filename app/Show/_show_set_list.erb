@@ -1,0 +1,4 @@
+<li class="group"><%= show_set_list.name %></li>
+<% show_set_list.set_list.song_performances.each do |sp| %>
+  <li><%= display_song_performance(sp) %></li>
+<% end %>
