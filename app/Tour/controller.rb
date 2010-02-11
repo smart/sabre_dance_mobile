@@ -4,7 +4,7 @@ class TourController < Rho::RhoController
  include ShowHelper
   #GET /Tour
   def index
-    @tours = Tourr.find(:all)
+    @tours = Tourr.find(:all, :order => "first_show_date", :orderdir => "desc")
     render
   end
 

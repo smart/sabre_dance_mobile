@@ -1,0 +1,20 @@
+<% if show.venue %>
+  <h2>Venue</h2>
+  <ul class="rounded">
+    <li>Venue Name, Address Etc</li>
+    <li><a href="/app/VenueMap/<%= show.venue.object %>" class="flip">Venue Map</a></li>
+  </ul>
+<% end %>
+
+<% unless show.photos.empty? %>
+  <ul class="individual"><li><a href="/apps/PhotoAlbum/<%= "4" %>">Photos</a></li></ul>
+<% end %>
+<ul class="rounded">
+  <% show.set_lists.each do |sl|%>
+	  <li class="group"><%= sl.name %></li>
+	  <% sl.song_performances.each do |sp| %>
+	  <% p sp %>
+	    <li><%= (sp.inverted? ? "<b>[X] </b>" : "") + "#{sp.song_name}#{sp.segue? ? " >" : ","}" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"font-size: 75%;\">" + (sp.tag_list.reject{|de| de =~ /nvert/} + [sp.notes]).compact.join(", &nbsp;") +  "</span>"%></li>
+    <% end %>
+  <%end%>
+</ul>

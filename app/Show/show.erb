@@ -1,22 +1,12 @@
-<div class="toolbar">
-  <a id="backButton" class="button" href="#" onClick='history.go(-1);return false;' target="_self">Back</a>
-	<h1 id="pageTitle">
-		<%=@show.date%>
-	</h1>
+<div id="show" class="plastic current">
+  <div class="toolbar">
+    <a class="back">Back</a>
+	  <h1><%=@show.date%></h1>
+  </div>
+
+  <% if @show.upcoming? %>
+    <%= render :partial => "upcoming_show", :locals => {:show => @show} %>
+  <% else %>
+    <%= render :partial => "past_show", :locals => {:show => @show } %>
+  <% end %>
 </div>
-
-
-<% if @show.upcoming? %>
-  <a href="http://localhost:3100/fan_requests/new">New Request</a>
-<% else %>
-  <ul id="show" title="Show" selected="true">
-
-  	<% @show.set_lists.each do |sl|%>
-  	  <li class="group"><%= sl.name %></li>
-  	  <% sl.song_performances.each do |sp| %>
-  	    <li><%= display_song_performance(sp) %></li>
-      <% end %>
-
-  	<%end%>
-  </ul>
-<% end %>

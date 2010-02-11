@@ -6,6 +6,7 @@ module ShowHelper
   end
 
   def display_song_performance(sp)
+    return sp.inspect
     (sp.inverted? ? "<b>[X] </b>" : "") + "#{sp.song_name}#{sp.segue? ? " >" : ","}" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"font-size: 75%;\">" + (sp.tag_list.reject{|de| de =~ /nvert/} + [sp.notes]).compact.join(", &nbsp;") +  "</span>"
   end
 

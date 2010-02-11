@@ -1,8 +1,8 @@
 extensions: ["json", "net/http"]
 sdk: "/Users/smartocci/Personal/git/rhodes"
-name: sabre_dance_mobile
-version: 1.4.0
-vendor: rhomobile
+name: "The Disco Biscuits"
+version: 1.0.0
+vendor: BandWith.us
 bbver: 4.6
 applog: rholog.txt
 iphone:

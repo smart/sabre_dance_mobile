@@ -1,0 +1,15 @@
+<div id="main" class="plastic current">
+  <div class="toolbar">
+    <a class="back">Back</a>
+	  <h1>Photo Albums</h1>
+	</div>
+
+  <ul id="photo_albums" title="PhotoAlbums" selected="true">
+	  <%@photo_albums.each do |x|%>
+	  <li>
+	    <img src="<%= x.thumbnail %>">
+	    <%=link_to "#{x.title}", :action => :show, :id => x.object%>
+	  </li>
+	  <%end%>
+  </ul>
+</div>

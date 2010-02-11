@@ -1,0 +1,17 @@
+<ul class="rounded individual">
+  <li><a href="http://localhost:3100/fan_requests/new" class="flip">New Request</a></li>
+</ul>
+
+<% if show.buy_tickets_link %>
+  <ul class="rounded individual">
+    <li><a href="<%= show.buy_tickets_link %>">Buy Tickets</a></li>
+  </ul>
+<% end %>
+
+<% if show.venue %>
+  <h2>Venue</h2>
+  <ul class="rounded">
+    <li>Venue Name, Address Etc</li>
+    <li><a href="/app/VenueMap/<%= show.venue.object %>" class="flip">Venue Map</a></li>
+  </ul>
+<% end %>

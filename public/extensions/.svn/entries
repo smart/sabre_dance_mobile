@@ -1,0 +1,64 @@
+8
+
+dir
+10
+https://jqextensions.googlecode.com/svn/trunk/example/extensions
+https://jqextensions.googlecode.com/svn
+
+
+
+2009-12-14T03:26:44.530353Z
+10
+brickysam26
+
+
+svn:special svn:externals svn:needs-lock
+
+jqt.sliding.js
+file
+
+
+
+
+2009-12-02T17:35:01.185052Z
+d27adc37cca89b0a87448f1ba82fd2e8
+2009-12-14T03:26:44.530353Z
+10
+brickysam26
+
+scrolling.css
+file
+
+
+
+
+2009-12-02T17:31:26.106927Z
+2d17f19ffb63031abae9106f1b273280
+2009-12-14T03:26:44.530353Z
+10
+brickysam26
+
+jqt.scrolling.js
+file
+
+
+
+
+2009-12-02T17:36:03.341302Z
+23c6d9d927403b202adbd032374d7814
+2009-12-14T03:26:44.530353Z
+10
+brickysam26
+
+jqt.scaling.js
+file
+
+
+
+
+2009-12-02T17:33:03.606927Z
+f9c7871e82b4d0283fecd762e653616a
+2009-12-14T03:26:44.530353Z
+10
+brickysam26
+

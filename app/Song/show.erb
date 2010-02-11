@@ -1,29 +1,14 @@
-<div class="toolbar">
-  <a id="backButton" class="button" href="#" onClick='history.go(-1);return false;' target="_self">Back</a>
-	<h1 id="pageTitle">
-		<%=@song.name%>
-	</h1>
-</div>
+<div id="song" class="plastic current">
+  <div class="toolbar">
+    <a class="back">Back</a>
+	  <h1><%=@song.name%></h1>
+  </div>
 
-<div class="panel" selected="true">
-
-<table class="grid">
-
-  <tr>
-	<td class="gridleft">Name</td>
-    <td class="gridright"><%=@song.name%></td>
-  </tr>
-  <tr>
-	<td class="gridleft">Nickname</td>
-    <td class="gridright"><%=@song.pt_nickname%></td>
-  </tr>
-  <td class="gridleft">Original</td>
-    <td class="gridright"><%=@song.original? ? "YES": "NO" %></td>
-  </tr>
-  <tr>
-	<td class="gridleft">Author</td>
-    <td class="gridright"><%=@song.author%></td>
-  </tr>
-
-</table>
+  <ul class="rounded">
+    <li><small>Name</small><%=@song.name%></li>
+    <li><small>Nickname</small><%=@song.pt_nickname%></li>
+    <li>Original: <%= @song.original? ? "YES": "NO" %></li>
+    <li>Author: <%=@song.author%></li>
+  </ul>
+    
 </div>

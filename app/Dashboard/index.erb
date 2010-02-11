@@ -1,33 +1,22 @@
-<div id="home" class="plastic">
-<div class="toolbar">
-	<h1 id="pageTitle">
-		Dashboard
-	</h1>
-</div>
-      
-<div class="panel" selected="true">
+<div id="home" class="current">
+  <div class="toolbar">
+  	<h1>
+  		Dashboard
+  	</h1>
+  </div>
 
-<table class="grid">
+  <h2>Upcoming Concerts:</h2>
+  <ul class="rounded"><li><%= @upcoming_show ? "<a href=\"/app/Show/#{@upcoming_show.object}\">#{display_show(@upcoming_show)}</a>" : "None Scheduled" %></li></ul>
+  <h2>Recent Concerts:</h2>
+  <ul class="rounded">
+    <li><a href="/app/Show/<%= @last_show.object %>"><%= display_show(@last_show) %></a></li>
+  </ul>
 
-  <tr>
-	<td class="gridleft">Upcoming:</td>
-    <td class="gridright"><%= @upcoming_show ? link_to( display_show(@upcoming_show), :model => "Show", :action => :show, :id => @upcoming_show.id) : "None Scheduled" %></td>
-  </tr>
-  <td class="gridleft">Last Played:</td>
-    <td class="gridright">
-      <a href="/app/Show/<%= @last_show.object %>">
-        <%= display_show(@last_show) %>
-      </a>
-    </td>
+  <h2>News</h2>
+  <ul class="rounded" >
+    <% Postr.find(:all, :limit => 5, :order => "published", :orderdir => "desc").each do |post|%>
+      <li><%= post.summary %></li>
+    <% end %>
+  </ul>
 
-  </tr>
-
-</table>
-<% if @loading %>
-LOADING DB::
-<% end %>
-<div class="player_wrapper">
-      <a href="/app/Dashboard/load_db">Load DB
-      </a>  </div>
-      
 </div>

@@ -1,0 +1,20 @@
+<div id="shows" class="plastic current">
+  <div class="toolbar">
+  	<h1 id="pageTitle">
+  		News
+  	</h1>
+  </div>
+
+  <ul class="rounded individual">
+    <li><a href="/app/Post/news">Official News</a></li>
+    <li><a href="/app/Post/tweets">Tweets</a></li>
+  </ul>
+  <ul id="posts" title="Posts" selected="true">
+
+  	<%@posts.each do |x|%>
+
+  	<li><%=link_to "#{x.summary}", :action => :show, :id => x.object%></li>
+
+  	<%end%>
+  </ul>
+</div>

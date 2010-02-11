@@ -1,32 +1,25 @@
-<div class="toolbar">
-  <a id="backButton" class="button" href="#" onClick='history.go(-1);return false;' target="_self">Back</a>
-	<h1 id="pageTitle">
-		<%= @venue.name %>
-	</h1>
+<div id="venue" class="plastic current">
+  <div class="toolbar">
+    <a class="back">Back</a>
+	  <h1 id="pageTitle"><%= @venue.name %></h1>
+  </div>
+
+  <ul class="rounded">
+    <li><%= venue_address(@venue) %></li>
+    <% if @venue.full_address %>
+      <li><a href="/app/Venue/<%= @venue.object %>/map">Map</a></li>
+    <% end %>
+    <% if @venue.phone %>
+      <li><%= @venue.phone %></li>
+    <% end %>
+    <% if @venue.website %>
+      <li><a href="<%= @venue.webite %>"><%= @venue.website %></a></li>
+    <% end %>
+  </ul>
+  <h2><%= @venue.shows.count %> Shows Played Here</h2>
+  <ul class="rounded">
+    <% @venue.shows.each do |show| %>
+      <li><a href="/app/Show/<%= show.object %>"><%= display_show(show) %></a></li>
+    <% end %>
+  </ul>
 </div>
-
-<div class="panel" selected="true">
-
-<table class="grid">
-  <tr>
-	  <td class="gridleft">Address:</td>
-    <td class="gridright">
-      <a href="/app/Venue/<%= @venue.object %>/map">
-        <%= venue_address(@venue) %>
-      </a>
-    </td>
-  </tr>
-  <% if @venue.phone %>
-    <tr>
-      <td class="gridleft">Phone:</td>
-      <td class="gridright"><%= @venue.phone %></td>
-    </tr>
-  <% end %>
-
-  <% if @venue.website %>
-    <tr>
-      <td class="gridleft">Website:</td>
-      <td class="gridright"><a href="<%= @venue.webite %>"><%= @venue.website %></a></td>
-    </tr>
-  <% end %>
-</table>

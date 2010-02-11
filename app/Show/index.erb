@@ -1,15 +1,11 @@
-<div class="toolbar">
-  <a id="backButton" class="button" href="/app/Show/main" target="_self">Back</a>
-	<h1 id="pageTitle">
-		Showsd
-	</h1>
+<div id="shows" class="plastic current">
+  <div class="toolbar">
+    <a class="back">Back</a>
+	  <h1>Shows</h1>
+	</div>
+  <ul>
+	  <% @shows.each do |show|%>
+	    <li><a href="/app/Show/<%= show.object %>"><%= display_show(show) %></a></li>
+	  <%end%>
+  </ul>
 </div>
-
-<ul id="shows" title="Shows" selected="true">
-	<%@shows.each do |show|%>
-	  <li><a href="/app/Show/<%= show.object %>">
-      <%= display_show(show) %>
-    </a></li>
-
-	<%end%>
-</ul>

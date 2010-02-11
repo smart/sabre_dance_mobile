@@ -1,15 +1,12 @@
-<div class="toolbar">
-  <a id="backButton" class="button" href="/app/Show/main" target="_self">Back</a>
-	<h1 id="pageTitle">
-		Venues
-	</h1>
-	<a class="button right_button" href="Venue/new" target="_self">New</a>
+<div id="venues" class="plastic current">
+  <div class="toolbar">
+    <a class="back">Back</a>
+	  <h1>Venues</h1>
+	</div>
+
+  <ul>
+	  <%@venues.each do |x|%>
+      <li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
+    <%end%>
+  </ul>
 </div>
-
-<ul id="venues" title="Venues" selected="true">
-	<%@venues.each do |x|%>
-
-	<li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
-
-	<%end%>
-</ul>

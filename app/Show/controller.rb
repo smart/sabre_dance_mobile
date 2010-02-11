@@ -1,3 +1,4 @@
+#require 'rho/rhoapplication'
 require 'rho/rhocontroller'
 require 'helpers/show_helper'
 class ShowController < Rho::RhoController
@@ -15,16 +16,25 @@ class ShowController < Rho::RhoController
 
   # GET /Show/{1}
   def show
+    tabs = [{ :label => "Info", :action => '/app',
+              :label => "Setlist", :action => "/app",
+              :label => 'Photos', :action => "/app"}]
+    #NativeBar.create(2, tabs)
+    #::NativeBar.remove
+    #::NativeBar.create(2, tabs)
     @show =  Showr.find(@params['id'])
     #raise SongPerformancer.find(:all).inspect
-    @venue = @show.venue
     render :action => :show
   end
 
   # GET /Show/new
-  def new
+  def new_request
     @show = Show.new
     render :action => :new
+  end
+
+  def create_request
+    #send request
   end
 
   # GET /Show/{1}/edit

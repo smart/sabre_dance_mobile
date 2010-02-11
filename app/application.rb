@@ -5,15 +5,16 @@ require 'json'
 
 class AppApplication < Rho::RhoApplication
   def initialize
-      # Tab items are loaded left->right, @tabs[0] is leftmost tab in the tab-bar
-      @tabs = [{ :label => "Dashboard", :action => '/app/Dashboard', :icon => "/public/images/right_button.png", :reload => true },
+     @tabs = [{ :label => "Dashboard", :action => '/app/Dashboard', :icon => "/public/images/right_button.png", :reload => true },
                { :label => "Songs/Sets", :action => '/app/Show/main', :icon => "/public/images/right_button.png" },
                { :label => "Media", :action => '/app/Media', :icon => "/public/images/right_button.png" },
-               { :label =>  "News", :action => 'http://www.discobiscuits.com/2/', :icon => "/public/images/right_button.png" },
+               { :label =>  "News", :action => '/app/Post', :icon => "/public/images/right_button.png" },
                { :label => "Options", :action => '/app/Settings', :icon => "/public/images/right_button.png" }]
       # Important to call super _after_ you define @tabs!
       #Rho::RhoUtils.load_offline_data(['object_values'])
       super
+      SyncEngine::set_objectnotify_url("/app/Settings/sync_object_notify")
+      #NativeBar.remove
     end
 end
 
@@ -109,6 +110,18 @@ class Showr < ActiveRhom
     sets
   end
 
+  def photo_albums
+    @photo_albums ||= (PhotoAlbumr.find(:all, :conditions => {:show_id => strip_braces(object)}, :order => "date", :orderdir => "DESC") || [])
+  end
+
+  def photos
+    photo_albums.collect{|pa| pa.photos }.flatten
+  end
+
+  def buy_tickets_link
+    "http://www.google.com"
+  end
+
 end
 
 
@@ -138,9 +151,27 @@ class Venuer < ActiveRhom
   def shows
     @shows ||= Showr.find(:all, :conditions => {:venue_id => strip_braces(object)}, :order => "date", :orderdir => "DESC")
   end
+
+  def photo_albums
+    @photo_albums ||= PhotoAlbumr.find(:all, :conditions => {:venue_id => strip_braces(object)}, :order => "date", :orderdir => "DESC")
+  end
+
+  def photos
+    photo_albums.collect{|pa| pa.photos }.flatten
+  end
+
 end
 
+class PhotoAlbumr < ActiveRhom
+  def self.rhom_class
+    PhotoAlbum
+  end
 
+  def photos
+    @photos ||= JSON.parse( photos_json.unpack("m").first || "[]")
+  end
+
+end
 
 class SetList
   attr_accessor :song_performances, :position, :name
@@ -148,6 +179,7 @@ class SetList
     p "Creating set list"
     p set_list
     @song_performances = set_list["song_performances"].collect{|sp| SongPerformance.new(sp)}
+    p @song_performances
     @position = set_list["position"]
     @name = set_list["name"]
   end
@@ -155,13 +187,10 @@ class SetList
 end
 
 
-class SongPerformance< ActiveRhom
+class SongPerformance #< ActiveRhom
   attr_accessor :segue, :song_id, :song_name, :inverted, :notes, :tag_list_string, :display_str
 
   def initialize(song_performance)
-    p "creating song performance"
-    p song_performance
-    p "created"
     @segue = (song_performance["segue"] == true || song_performance["segue"] == "true") ? true : false
     @song_id = song_performance["song_id"]
     @song_name = song_performance["song_name"]
@@ -247,4 +276,21 @@ class Songr < ActiveRhom
     original == "true" ? true : false
   end
 
+end
+
+class Postr < ActiveRhom
+
+  def self.rhom_class
+    Post
+  end
+
+  def self.find_tweets(first, opts ={})
+    opts.merge!(:conditions => {:post_type => "Tweet"})
+    find(first, opts)
+  end
+
+  def self.find_news(first, opts = {})
+    opts.merge!(:conditions => {:post_type => "Offical News"})
+    find(first, opts)
+  end
 end
