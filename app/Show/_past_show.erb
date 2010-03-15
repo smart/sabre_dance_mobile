@@ -1,20 +1,14 @@
-<% if show.venue %>
-  <h2>Venue</h2>
-  <ul class="rounded">
-    <li>Venue Name, Address Etc</li>
-    <li><a href="/app/VenueMap/<%= show.venue.object %>" class="flip">Venue Map</a></li>
-  </ul>
-<% end %>
-
-<% unless show.photos.empty? %>
-  <ul class="individual"><li><a href="/apps/PhotoAlbum/<%= "4" %>">Photos</a></li></ul>
-<% end %>
 <ul class="rounded">
-  <% show.set_lists.each do |sl|%>
-	  <li class="group"><%= sl.name %></li>
-	  <% sl.song_performances.each do |sp| %>
-	  <% p sp %>
-	    <li><%= (sp.inverted? ? "<b>[X] </b>" : "") + "#{sp.song_name}#{sp.segue? ? " >" : ","}" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\"font-size: 75%;\">" + (sp.tag_list.reject{|de| de =~ /nvert/} + [sp.notes]).compact.join(", &nbsp;") +  "</span>"%></li>
-    <% end %>
-  <%end%>
+  <li class="forward"><a href="/app/Show/set_list/<%= show.object %>" class="flip">Set List</a></li>
+  <% if show.photo_albums.first %>
+    <li class="forward"><a href="/app/PhotoAlbum/<%= show.photo_albums.first.object %>" class="flip">Photos</a></li>
+  <% end %>
+  <% unless show.videos.empty? %>
+    <li class="forward"><a href="/app/Show/videos/<%= show.object %>" class="flip">Videos</a></li>
+  <% end %>
+</ul>
+
+<ul class="individual">
+  <li><a href="livedownload">Live Download</a></li>
+  <li><a href="archie">Archive</a></li>
 </ul>

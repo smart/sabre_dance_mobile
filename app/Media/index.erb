@@ -1,13 +1,11 @@
-<div id="media" class="plastic current">
-  <div class="toolbar">
-  	<h1>
-  		Media
-  	</h1>
-  </div>
-
-  <ul>
-    <li><a href="/app/Media/music">Studio Tracks</a></li>
-    <li><a href="/app/PhotoAlbum">Pictures</a></li>
-  	<li><a href="/app/Video/video">Video</a></li>
-  </ul>
+<div id="media-index">
+  <%= @toolbar  %>
+  <div class="vertical-scroll">
+    <div>
+      <ul>
+        <li><a href="/app/Media/music">Studio Tracks</a></li>
+        <li><a href="/app/PhotoAlbum">Pictures</a></li>
+      	<li><a href="/app/Media/videos">Videos</a></li>
+      </ul>
+    </div>
 </div>

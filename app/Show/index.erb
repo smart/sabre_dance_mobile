@@ -1,11 +1,12 @@
-<div id="shows" class="plastic current">
-  <div class="toolbar">
-    <a class="back">Back</a>
-	  <h1>Shows</h1>
-	</div>
-  <ul>
-	  <% @shows.each do |show|%>
-	    <li><a href="/app/Show/<%= show.object %>"><%= display_show(show) %></a></li>
-	  <%end%>
-  </ul>
+<div id="shows">
+  <%= @toolbar  %>
+  <div class="vertical-scroll">
+    <div>
+      <ul>
+	      <% @shows.each do |show|%>
+      	  <li><a href="/app/Show/<%= show.object %>"><%= display_show(show) %></a></li>
+      	<%end%>
+      </ul>
+    </div>
+  </div>
 </div>

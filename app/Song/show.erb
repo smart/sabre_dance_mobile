@@ -1,14 +1,13 @@
-<div id="song" class="plastic current">
-  <div class="toolbar">
-    <a class="back">Back</a>
-	  <h1><%=@song.name%></h1>
+<div id="song-<%= @song.id %>">
+  <%= @toolbar  %>
+  <div class="vertical-scroll">
+    <div>
+      <ul class="rounded">
+        <li><small>Name</small><%=@song.name%></li>
+        <li><small>Nickname</small><%=@song.pt_nickname%></li>
+        <li>Original: <%= @song.original? ? "YES": "NO" %></li>
+        <li>Author: <%=@song.author%></li>
+      </ul>
+    </div>
   </div>
-
-  <ul class="rounded">
-    <li><small>Name</small><%=@song.name%></li>
-    <li><small>Nickname</small><%=@song.pt_nickname%></li>
-    <li>Original: <%= @song.original? ? "YES": "NO" %></li>
-    <li>Author: <%=@song.author%></li>
-  </ul>
-    
 </div>

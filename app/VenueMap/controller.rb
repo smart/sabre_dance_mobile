@@ -3,7 +3,7 @@ class VenueMapController < Rho::RhoController
 
   # GET /Venue/{1}
   def show
-    @venue = Venuer.find(@params['id'])
+    @venue = Venue.find(@params['id'])
      #pin color
      map_params = {
           :settings => {:map_type => "hybrid",:region => [@venue.lat, @venue.lng, 0.2, 0.2],

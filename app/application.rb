@@ -2,23 +2,27 @@ require 'rho/rhoapplication'
 require 'rho/rhoutils'
 require 'rhom'
 require 'json'
+#require 'lib/facebooker'
 
 class AppApplication < Rho::RhoApplication
   def initialize
-     @tabs = [{ :label => "Dashboard", :action => '/app/Dashboard', :icon => "/public/images/right_button.png", :reload => true },
-               { :label => "Songs/Sets", :action => '/app/Show/main', :icon => "/public/images/right_button.png" },
-               { :label => "Media", :action => '/app/Media', :icon => "/public/images/right_button.png" },
-               { :label =>  "News", :action => '/app/Post', :icon => "/public/images/right_button.png" },
-               { :label => "Options", :action => '/app/Settings', :icon => "/public/images/right_button.png" }]
+     old_tabs = [  { :label => "Dashboard", :action => '/app/Dashboard', :icon => "/public/images/right_button.png", :reload => true },
+                { :label => "Songs/Sets", :action => '/app/Show/main', :icon => "/public/images/right_button.png" },
+                { :label => "Media", :action => '/app/Media', :icon => "/public/images/right_button.png" },
+                { :label =>  "News", :action => '/app/Post', :icon => "/public/images/right_button.png" },
+                { :label => "Options", :action => '/app/Settings', :icon => "/public/images/right_button.png" } ]
       # Important to call super _after_ you define @tabs!
       #Rho::RhoUtils.load_offline_data(['object_values'])
+      #NativeBar.remove
+      #NativeBar.create(2)
+
       super
       SyncEngine::set_objectnotify_url("/app/Settings/sync_object_notify")
       #NativeBar.remove
     end
 end
 
-
+=begin
 class ActiveRhom
   def strip_braces(str=nil)
     str ? str.gsub(/\{/,"").gsub(/\}/,"") : nil
@@ -57,73 +61,6 @@ class ActiveRhom
 
 end
 
-class Tourr < ActiveRhom
-
-  def self.rhom_class
-    Tour
-  end
-
-  def shows
-    @shows ||= Showr.find(:all, :conditions => {:tour_id => strip_braces(object)}, :order => "date", :orderdir => "DESC")
-  end
-end
-
-class Showr < ActiveRhom
-
-  def self.rhom_class
-    Show
-  end
-
-  def venue
-    @venue ||=  Venuer.find(venue_id)
-  end
-
-  def the_set_list
-    @the_set_list ||= JSON.parse( set_list_json.unpack("m").first || "{}")
-  end
-
-  def set_lists
-    @set_lists ||= the_set_list.collect{|set| SetList.new(set)}
-  end
-
-  def upcoming?
-    Date.parse(date) >= Date.today
-  end
-
-  def song_performances
-    @song_performances ||= SongPerformancer.find(:all, :conditions => {:show_id => strip_braces(object)})
-  end
-
-  def normalized_set_lists
-    sl = {}
-    song_performances.each do |element|
-      key = element.set
-      if sl.has_key?(key)
-        sl[key] << element
-      else
-        sl[key] = [element]
-      end
-    end
-    p "DOES THIS COME OUT?"
-    sets = []
-    sl.each {|key, value| sets << SetList.new(key, value)}
-    sets
-  end
-
-  def photo_albums
-    @photo_albums ||= (PhotoAlbumr.find(:all, :conditions => {:show_id => strip_braces(object)}, :order => "date", :orderdir => "DESC") || [])
-  end
-
-  def photos
-    photo_albums.collect{|pa| pa.photos }.flatten
-  end
-
-  def buy_tickets_link
-    "http://www.google.com"
-  end
-
-end
-
 
 class SetListSync
   attr_accessor :song_performances, :position, :name
@@ -138,40 +75,8 @@ class SetListSync
 
 end
 
-class Venuer < ActiveRhom
 
-  def self.rhom_class
-    Venue
-  end
 
-  def street_address
-    "#{street1}, #{city}, #{state} #{zip}"
-  end
-
-  def shows
-    @shows ||= Showr.find(:all, :conditions => {:venue_id => strip_braces(object)}, :order => "date", :orderdir => "DESC")
-  end
-
-  def photo_albums
-    @photo_albums ||= PhotoAlbumr.find(:all, :conditions => {:venue_id => strip_braces(object)}, :order => "date", :orderdir => "DESC")
-  end
-
-  def photos
-    photo_albums.collect{|pa| pa.photos }.flatten
-  end
-
-end
-
-class PhotoAlbumr < ActiveRhom
-  def self.rhom_class
-    PhotoAlbum
-  end
-
-  def photos
-    @photos ||= JSON.parse( photos_json.unpack("m").first || "[]")
-  end
-
-end
 
 class SetList
   attr_accessor :song_performances, :position, :name
@@ -209,7 +114,7 @@ class SongPerformance #< ActiveRhom
   end
 
   def song
-     @song ||= Songr.find(song_id)
+     @song ||= Song.find(song_id)
    end
 
    def tag_list
@@ -257,7 +162,7 @@ class SongPerformancer < ActiveRhom
   end
 
   def song
-    @song ||= Songr.find(song_id)
+    @song ||= Song.find(song_id)
   end
 
   def tag_list
@@ -265,32 +170,6 @@ class SongPerformancer < ActiveRhom
   end
 
 end
+=end
 
-class Songr < ActiveRhom
 
-  def self.rhom_class
-    Song
-  end
-
-  def original?
-    original == "true" ? true : false
-  end
-
-end
-
-class Postr < ActiveRhom
-
-  def self.rhom_class
-    Post
-  end
-
-  def self.find_tweets(first, opts ={})
-    opts.merge!(:conditions => {:post_type => "Tweet"})
-    find(first, opts)
-  end
-
-  def self.find_news(first, opts = {})
-    opts.merge!(:conditions => {:post_type => "Offical News"})
-    find(first, opts)
-  end
-end

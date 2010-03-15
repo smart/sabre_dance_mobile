@@ -1,12 +1,23 @@
-<div id="show" class="plastic current">
-  <div class="toolbar">
-    <a class="back">Back</a>
-	  <h1><%=@show.date%></h1>
+<div id="show-<%= @show.id %>">
+  <%= @toolbar  %>
+	<div class="vertical-scroll">
+	  <div>
+	    <div class="show_header">
+	      <img src="http://showclix.com/blog/wp-content/uploads/2009/07/Disco-Biscuits.jpg" width="120" heigh="80">
+    	  <div class="show_info">
+    	    <h2><%= @show.venue.name %></h2>
+    	    <center>
+    	      <p><%= @show.venue.city %>, <% @show.venue.state %></p>
+    	      <p><%= @show.venue.date %></p>
+    	    </center>
+    	  </div>
+    	  <br clear="all"/>
+  	  </div>
+  	  <% if @show.upcoming? %>
+        <%= render :partial => "upcoming_show", :locals => {:show => @show} %>
+      <% else %>
+        <%= render :partial => "past_show", :locals => {:show => @show } %>
+      <% end %>
+	  </div>
   </div>
-
-  <% if @show.upcoming? %>
-    <%= render :partial => "upcoming_show", :locals => {:show => @show} %>
-  <% else %>
-    <%= render :partial => "past_show", :locals => {:show => @show } %>
-  <% end %>
 </div>

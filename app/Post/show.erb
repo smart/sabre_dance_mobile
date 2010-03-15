@@ -1,39 +1,7 @@
-<div class="toolbar">
-	<h1 id="pageTitle">
-		<%=@post.url%>
-	</h1>
-</div>
-
-<div class="panel" selected="true">
-
-<a class="button right_button" href="<%=url_for(:action => :edit, :id => @post.object)%>" target="_self">Edit</a>
-
-<table class="grid">
-  
-  <tr>
-	<td class="gridleft">Url</td>
-    <td class="gridright"><%=@post.url%></td>
-  </tr>
-  
-  <tr>
-	<td class="gridleft">Title</td>
-    <td class="gridright"><%=@post.title%></td>
-  </tr>
-  
-  <tr>
-	<td class="gridleft">Published</td>
-    <td class="gridright"><%=@post.published%></td>
-  </tr>
-  
-  <tr>
-	<td class="gridleft">Summary</td>
-    <td class="gridright"><%=@post.summary%></td>
-  </tr>
-  
-  <tr>
-	<td class="gridleft">PostType</td>
-    <td class="gridright"><%=@post.post_type%></td>
-  </tr>
-  
-</table>
+<div id="post-<%= @post.id %>">
+  <%= @toolbar  %>
+  <div class="vertical-scroll">
+    <div>
+    </div>
+  </div>
 </div>

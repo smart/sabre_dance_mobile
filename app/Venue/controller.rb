@@ -1,22 +1,22 @@
-require 'rho/rhocontroller'
-require 'helpers/show_helper'
-class VenueController < Rho::RhoController
-  include ShowHelper
+require 'base_controller'
+class VenueController < BaseController
 
   #GET /Venue
   def index
-    @venues = Venuer.find(:all)
+    toolbar("Venues", :back => "Back")
+    @venues = Venue.find(:all)
     render
   end
 
   # GET /Venue/{1}
   def show
-    @venue = Venuer.find(@params['id'])
+    @venue = Venue.find(@params['id'])
+    toolbar(@venue.name, :back => "Back")
     render :action => :show
   end
 
   def map
-    @venue = Venuer.find(@params['id'])
+    @venue = Venue.find(@params['id'])
      #pin color
      map_params = {
           :settings => {:map_type => "hybrid",:region => [@venue.lat, @venue.lng, 0.2, 0.2],
@@ -30,36 +30,5 @@ class VenueController < Rho::RhoController
     render :action => :show
   end
 
-  # GET /Venue/new
-  def new
-    @venue = Venue.new
-    render :action => :new
-  end
 
-  # GET /Venue/{1}/edit
-  def edit
-    @venue = Venue.find(@params['id'])
-    render :action => :edit
-  end
-
-  # POST /Venue/create
-  def create
-    @venue = Venue.new(@params['venue'])
-    @venue.save
-    redirect :action => :index
-  end
-
-  # POST /Venue/{1}/update
-  def update
-    @venue = Venue.find(@params['id'])
-    @venue.update_attributes(@params['venue'])
-    redirect :action => :index
-  end
-
-  # POST /Venue/{1}/delete
-  def delete
-    @venue = Venue.find(@params['id'])
-    @venue.destroy
-    redirect :action => :index
-  end
 end

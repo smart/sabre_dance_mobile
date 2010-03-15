@@ -1,0 +1,26 @@
+<div id="song-request-<%= @show.object %>">
+  <div class="toolbar">
+    <a class="back">Back</a>
+    <h1>Song Request</h1>
+  </div>
+  <form action="/app/Show/create_song_request/<%= @show.object %>" method="post" accept-charset="utf-8">
+      <ul class="rounded">
+        <li>
+          <select name="fan_request[song_id]">
+            <option value="">Select a Song</option>
+            <% @songs.each do |song| %>
+              <option value="<%= song.object %>"><%= song.name %></option>
+            <% end %>
+          </select>
+        </li>
+        <li><input name="fan_request[requested_by]" value="" type="text" placeholder="Your Name"></li>
+      </ul>
+      <h2>Add a note to the request</h2>
+      <ul class="rounded">
+        <li><textarea name="fan_request[notes]" placeholder="Add a Note to the band"></textarea></li>
+      </ul>
+      <input type="hidden" name="fan_request[show_id]" value="<%= @show.object %>"/>
+      <a class="whiteButton submit_songrequest">Submit</a>
+      <a class="grayButton goback">Cancel</a>
+    </form>
+</div>

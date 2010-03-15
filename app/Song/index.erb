@@ -1,12 +1,12 @@
-<div id="songs" class="plastic current">
-  <div class="toolbar">
-    <a class="back">Back</a>
-	  <h1>Songs</h1>
+<div id="songs">
+  <%= @toolbar  %>
+  <div class="vertical-scroll">
+    <div>
+      <ul>
+        <%@songs.each do |x|%>
+          <li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
+        <%end%>
+      </ul>
+    </div>
   </div>
-
-  <ul>
-	  <%@songs.each do |x|%>
-	    <li><%=link_to "#{x.name}", :action => :show, :id => x.object%></li>
-	  <%end%>
-  </ul>
 </div>

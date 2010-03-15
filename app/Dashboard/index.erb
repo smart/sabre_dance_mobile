@@ -1,22 +1,41 @@
-<div id="home" class="current">
+<div id="home">
   <div class="toolbar">
   	<h1>
-  		Dashboard
+  		Disco Biscuits
   	</h1>
   </div>
+  <div class="vertical-scroll with-bottom-bar">
+    <div>
+      <h2> Right Now</h2>
+      <ul class="rounded">
+        <li><%= @upcoming_show ? "<a href=\"/app/Show/#{@upcoming_show.object}\">#{display_show(@upcoming_show)}</a>" : "None Scheduled" %></li>
+      </ul>
+      <ul class="rounded" >
+          <li class="forward">
+            <a href="/app/Show/main">Tour Guide</a>
+            <a href="/app/Show/main">SetLists, Songs, Venues and more</a>
+          </li>
+          <li class="forward">
+            <a href="/app/Post">Communications</a>
+            <a href="/app/Post">News, Tweets, From the Studio</a>
+          </li>
+          <li class="forward">
+            <a href="/app/Media">Media</a>
+            <a href="/app/Media">Audio, Video, Music</a>
+          </li>
+      </ul>
 
-  <h2>Upcoming Concerts:</h2>
-  <ul class="rounded"><li><%= @upcoming_show ? "<a href=\"/app/Show/#{@upcoming_show.object}\">#{display_show(@upcoming_show)}</a>" : "None Scheduled" %></li></ul>
-  <h2>Recent Concerts:</h2>
-  <ul class="rounded">
-    <li><a href="/app/Show/<%= @last_show.object %>"><%= display_show(@last_show) %></a></li>
-  </ul>
-
-  <h2>News</h2>
-  <ul class="rounded" >
-    <% Postr.find(:all, :limit => 5, :order => "published", :orderdir => "desc").each do |post|%>
-      <li><%= post.summary %></li>
-    <% end %>
-  </ul>
-
+      <ul class="individual">
+        <li>
+          <a href="/app/Settings">Help</a>
+        </li>
+        <li>
+          <a href="/app/Settings/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="info">
+    <p>Important Info Bar</p>
+  </div>
 </div>

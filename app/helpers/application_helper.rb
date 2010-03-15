@@ -2,6 +2,14 @@ require 'helpers/show_helper'
 module ApplicationHelper
   include ShowHelper
 
+  def action_name
+    @request['action']
+  end
+
+  def controller_name
+    @request['model']
+  end
+
   def strip_braces(str=nil)
     str ? str.gsub(/\{/,"").gsub(/\}/,"") : nil
   end

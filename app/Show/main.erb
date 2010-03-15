@@ -1,14 +1,21 @@
-<div id="main" class="plastic current">
-  <div class="toolbar">
-  	<h1>
-  		Set Lists and Songs
-  	</h1>
+<div id="shows-select">
+  <%= @toolbar  %>
+  <div class="vertical-scroll">
+    <div>
+      <ul class="rounded">
+        <li class="forward"><a href="/app/Show/upcoming">Upcoming Concerts</a></li>
+        <li class="forward"><a href="/app/Show/recent">Recently Played</a></li>
+        <% if @tour %>
+          <li class="forward"><a href="/app/Tour/<% @tour.object %>"><%= @tour.name %></a></li>
+        <% end %>
+      </ul>
+      
+      <ul class="rounded">
+        <li class="forward"><a href="/app/Show/years">Concerts</a></li>
+        <li class="forward"><a href="/app/Song">Songs</a></li>
+        <li class="forward"><a href="/app/Venue">Venues</a></li>
+        <li class="forward"><a href="/app/Tour">Tours</a></li>
+      </ul>
+    </div>
   </div>
-
-  <ul>
-    <li><a href="/app/Tour">Tours</a></li>
-    <li><a href="/app/Show">Shows</a></li>
-  	<li><a href="/app/Song">Songs</a></li>
-  	<li><a href="/app/Venue">Venues</a></li>
-  </ul>
 </div>

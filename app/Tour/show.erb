@@ -1,12 +1,12 @@
-<div id="tour" class="plastic current">
-  <div class="toolbar">
-    <a class="back">Back</a>
-	  <h1><%= @tour.name %></h1>
+<div id="tour-<%= @tour.id %>">
+  <%= @toolbar  %>
+  <div class="vertical-scroll">
+    <div>
+      <ul>
+        <% @tour.shows.each do |show|%>
+          <li><a href="/app/Show/<%= show.object %>"><%= display_show(show) %></a></li>
+        <%end%>
+      </ul>
+    </div>
   </div>
-
-  <ul>
-	  <% @tour.shows.each do |show|%>
-      <li><a href="/app/Show/<%= show.object %>"><%= display_show(show) %></a></li>
-	  <%end%>
-  </ul>
 </div>
