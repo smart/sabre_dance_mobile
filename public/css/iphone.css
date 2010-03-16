@@ -1,62 +1,18 @@
 
-
-/**
- *
- *
- *
- *
- *
- */
- 
-.horizontal-scroll, 
-.horizontal-scroll .scroll-container, 
-.horizontal-slide, 
-.horizontal-slide .slide-container
-{
-    width: 320px;
-    height: 100%;
-    overflow: hidden;
-    padding: 0;
-}
-.landscape .horizontal-scroll, 
-.landscape .horizontal-scroll .scroll-container, 
-.landscape .horizontal-slide, 
-.landscape .horizontal-slide .slide-container
-{
-    width: 480px;
-}
-.profile .horizontal-scroll, 
-.profile .horizontal-scroll .scroll-container, 
-.profile .horizontal-slide, 
-.profile .horizontal-slide .slide-container
-{
-    width: 320px;
-}
-.vertical-scroll, .vertical-slide
-{
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    height: 370px;        
+.show_header {
+   display:block;
+   margin: 8px; 
 }
 
-.landscape .vertical-scroll, 
-.landscape .vertical-slide
-{
-	height: 230px;
-}
-.vertical-scroll > div, 
-.vertical-slide > div
-{
-    margin: 0 auto;
+.show_header img {
+  width: 120px;
+  height: 80px;
+  float: left;
 }
 
-.images img
-{
-    display:block;
-    clear:left;
-    margin: 0 auto;
-    position: relative;
-    max-width: 300px;
-    width: 300px;
+.show_header div.show_info {
+  float: right;
+  display: block;
+  width: 180px;
+  word-wrap: break-word;
 }
